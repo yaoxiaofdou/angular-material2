@@ -1,0 +1,162 @@
+<h1>觉得有用给个 Star 谢谢🙏</h1>
+
+<h1>Input</h1>
+
+<md-input-container>
+  <input mdInput placeholder="Favorite food" value="Sushi">
+</md-input-container>
+
+<h1>Checkbox</h1>
+
+<md-card>
+  <md-card-content>
+    <h2 class="example-h2">Checkbox configuration</h2>
+
+    <section class="example-section">
+      <md-checkbox class="example-margin" [(ngModel)]="checked">Checked</md-checkbox>
+      <md-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</md-checkbox>
+    </section>
+
+    <section class="example-section">
+      <label class="example-margin">Align:</label>
+      <md-radio-group [(ngModel)]="align">
+        <md-radio-button class="example-margin" value="start">Start</md-radio-button>
+        <md-radio-button class="example-margin" value="end">End</md-radio-button>
+      </md-radio-group>
+    </section>
+
+    <section class="example-section">
+      <md-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</md-checkbox>
+    </section>
+  </md-card-content>
+</md-card>
+
+<md-card class="result">
+  <md-card-content>
+    <h2 class="example-h2">Result</h2>
+
+    <section class="example-section">
+      <md-checkbox
+          class="example-margin"
+          [checked]="checked"
+          [indeterminate]="indeterminate"
+          [align]="align"
+          [disabled]="disabled">
+        I'm a checkbox
+      </md-checkbox>
+    </section>
+  </md-card-content>
+</md-card>
+
+<h1>Datapicker</h1>
+
+<md-input-container>
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+  <button mdSuffix [mdDatepickerToggle]="picker"></button>
+</md-input-container>
+<md-datepicker #picker></md-datepicker>
+
+<h1>Select</h1>
+
+<form>
+  <md-select placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
+    <md-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </md-option>
+  </md-select>
+
+  <p> Selected value: {{selectedValue}} </p>
+</form>
+
+<h1>Card</h1>
+
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>Shiba Inu</md-card-title>
+    <md-card-subtitle>Dog Breed</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image src="assets/img/examples/shiba2.jpg">
+  <md-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+      bred for hunting.
+    </p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+</md-card>
+
+<h1>Progress spinner</h1>
+
+<md-card>
+  <md-card-content>
+    <h2 class="example-h2">Progress bar configuration</h2>
+
+    <section class="example-section">
+      <label class="example-margin">Color:</label>
+      <md-radio-group [(ngModel)]="color">
+        <md-radio-button class="example-margin" value="primary">
+          Primary
+        </md-radio-button>
+        <md-radio-button class="example-margin" value="accent">
+          Accent
+        </md-radio-button>
+        <md-radio-button class="example-margin" value="warn">
+          Warn
+        </md-radio-button>
+      </md-radio-group>
+    </section>
+
+    <section class="example-section">
+      <label class="example-margin">Mode:</label>
+      <md-radio-group [(ngModel)]="mode">
+        <md-radio-button class="example-margin" value="determinate">
+          Determinate
+        </md-radio-button>
+        <md-radio-button class="example-margin" value="indeterminate">
+          Indeterminate
+        </md-radio-button>
+        <md-radio-button class="example-margin" value="buffer">
+          Buffer
+        </md-radio-button>
+        <md-radio-button class="example-margin" value="query">
+          Query
+        </md-radio-button>
+      </md-radio-group>
+    </section>
+
+    <section class="example-section" *ngIf="mode == 'determinate' || mode == 'buffer'">
+      <label class="example-margin">Progress:</label>
+      <md-slider class="example-margin" [(ngModel)]="value"></md-slider>
+    </section>
+    <section class="example-section" *ngIf="mode == 'buffer'">
+      <label class="example-margin">Buffer:</label>
+      <md-slider class="example-margin" [(ngModel)]="bufferValue"></md-slider>
+    </section>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-content>
+    <h2 class="example-h2">Result</h2>
+
+    <section class="example-section">
+      <md-progress-bar
+          class="example-margin"
+          [color]="color"
+          [mode]="mode"
+          [value]="value"
+          [bufferValue]="bufferValue">
+      </md-progress-bar>
+    </section>
+  </md-card-content>
+</md-card>
+
+<h1>Dialog</h1>
+
+<button md-button (click)="openDialog()">Launch dialog</button>
+You chose: {{selectedOption}}
